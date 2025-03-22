@@ -1,0 +1,67 @@
+#map {
+    width: 100%;
+    height: 50vh;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.property-item {
+    cursor: pointer;
+    padding: 1rem;
+    border-left: none;
+    border-right: none;
+}
+
+.property-item:first-child {
+    border-top: none;
+}
+
+.property-item:last-child {
+    border-bottom: none;
+}
+
+.property-item:hover {
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.info-window {
+    padding: 15px;
+    max-width: 300px;
+    background-color: rgba(33, 37, 41, 0.95);
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.info-window h5 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.info-window p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.info-window a {
+    color: var(--bs-info);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.info-window a:hover {
+    text-decoration: underline;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+    #map {
+        height: 40vh;
+    }
+
+    .property-item {
+        font-size: 0.9rem;
+    }
+}

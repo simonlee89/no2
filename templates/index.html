@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- 시트 선택 -->
+        <div class="col-12 mb-3">
+            <div class="btn-group w-100" role="group">
+                <input type="radio" class="btn-check" name="sheetType" id="강남월세" value="강남월세" checked>
+                <label class="btn btn-outline-primary" for="강남월세">강남월세</label>
+                
+                <input type="radio" class="btn-check" name="sheetType" id="강남전세" value="강남전세">
+                <label class="btn btn-outline-primary" for="강남전세">강남전세</label>
+                
+                <input type="radio" class="btn-check" name="sheetType" id="송파월세" value="송파월세">
+                <label class="btn btn-outline-primary" for="송파월세">송파월세</label>
+                
+                <input type="radio" class="btn-check" name="sheetType" id="송파전세" value="송파전세">
+                <label class="btn btn-outline-primary" for="송파전세">송파전세</label>
+            </div>
+        </div>
+        <!-- 검색 필터 -->
+        <div class="col-12">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">매물 필터</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="searchInput" placeholder="매물 검색...">
+                    </div>
+                    <div class="mb-3">
+                        <div class="btn-group w-100" role="group">
+                            <input type="radio" class="btn-check" name="statusFilter" id="all" value="all" checked>
+                            <label class="btn btn-outline-primary" for="all">전체</label>
+
+                            <input type="radio" class="btn-check" name="statusFilter" id="갠매" value="갠매">
+                            <label class="btn btn-outline-primary" for="갠매">갠매</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">보증금 범위</label>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="depositBillionStart" placeholder="억" min="0">
+                                    <span class="input-group-text">억</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="depositMillionStart" placeholder="만" min="0">
+                                    <span class="input-group-text">만</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="depositBillionEnd" placeholder="억" min="0">
+                                    <span class="input-group-text">억</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="depositMillionEnd" placeholder="만" min="0">
+                                    <span class="input-group-text">만</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">월세 범위</label>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-2">
+                                    <input type="number" class="form-control" id="monthlyRentStart" placeholder="만원" min="0">
+                                    <span class="input-group-text">만원</span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-2">
+                                    <input type="number" class="form-control" id="monthlyRentEnd" placeholder="만원" min="0">
+                                    <span class="input-group-text">만원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="filterButton" class="btn btn-primary w-100">검색</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 지도 -->
+        <div class="col-12 mt-3">
+            <div id="map"></div>
+        </div>
+
+        <!-- 매물 리스트 -->
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">매물 목록</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div id="propertyList" class="list-group list-group-flush">
+                        <!-- Property list will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}
